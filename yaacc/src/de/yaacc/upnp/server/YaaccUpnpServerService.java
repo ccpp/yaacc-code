@@ -129,6 +129,16 @@ public class YaaccUpnpServerService extends Service {
 	
 	private boolean initialized=false;
 
+	@Override
+	public void onCreate() {
+		super.onCreate();
+
+		// Need to call startForeground to prevent to be killed after a few seconds
+		if (Build.VERSION.SDK_INT >= 26) {
+			startForeground();
+		}
+	}
+
 	/*
 	 * (non-Javadoc)
 	 * 

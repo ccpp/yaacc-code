@@ -71,6 +71,16 @@ public class PlayerService extends Service {
     }
 
     @Override
+    public void onCreate() {
+        super.onCreate();
+
+        // Need to call startForeground to prevent to be killed after a few seconds
+        if (Build.VERSION.SDK_INT >= 26) {
+            startForeground();
+        }
+    }
+
+    @Override
     public void onDestroy() {
         Log.d(this.getClass().getName(), "On Destroy");
     }

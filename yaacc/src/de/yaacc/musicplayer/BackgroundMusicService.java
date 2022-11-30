@@ -64,6 +64,10 @@ public class BackgroundMusicService extends Service {
         super.onCreate();
         Log.d(this.getClass().getName(), "On Create");
 
+        // Need to call startForeground to prevent to be killed after a few seconds
+        if (Build.VERSION.SDK_INT >= 26) {
+            startForeground();
+        }
     }
 
     /*
